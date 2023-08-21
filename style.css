@@ -1,0 +1,39 @@
+#main {
+    margin: 40px auto;
+}
+
+.modal {
+    margin: 37% auto;
+    display: none;
+}
+
+.innerModal {
+    min-width: 150px;
+    max-width: 300px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.innerDiv {
+    min-width: 150px;
+    max-width: 300px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#OrderNotes::-webkit-scrollbar,
+#OrderNotes2::-webkit-scrollbar {
+    display: none;
+}
+
+#todoList {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* margin: 10px 150px;    DO THIS IN MEDIA QUERY FOR WIDTH GREATER */
+}
+
+.py-3 {
+    padding-top: 0.1rem !important;
+    padding-bottom: 0.1rem !important;
+}
