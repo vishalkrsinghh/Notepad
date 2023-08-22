@@ -24,6 +24,8 @@ if (localStorage.getItem("todo") == null) {
 }
 let todoArr = JSON.parse(localStorage.getItem("todo"));
 let abc = JSON.parse(localStorage.getItem("todo"));
+
+// showing all the notes on the Home page
 for (let i = 0; i < todoArr.length; i++) {
     todoList.innerHTML += `  <div 
             class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 innerDiv Card">
@@ -68,6 +70,8 @@ for (let i = 0; i < todoArr.length; i++) {
 }
 
 // console.log(todoArr);
+
+// adding notes in localStorage
 let addCard = () => {
     if (textArea.value !== "") {
         obj.content = textArea.value
@@ -124,6 +128,8 @@ let addCard = () => {
     }
     textArea.value = "";
     // obj.content=textArea.value;
+
+    // on click delete button after adding Notes
     for (let i = 0; i < todoArr.length; i++) {
         deleteBtn[i].onclick = () => {
             todoArr.splice(i, 1);
@@ -133,6 +139,7 @@ let addCard = () => {
         }
     }
 
+    // on click edit button after adding the notes
     let editIndex = -1;
     for (let i = 0; i < todoArr.length; i++) {
         editBtn[i].onclick = () => {
@@ -146,7 +153,7 @@ let addCard = () => {
     }
 }
 
-
+// on click delete button of the home page notes.
 for (let i = 0; i < todoArr.length; i++) {
     deleteBtn[i].onclick = () => {
         card[i].remove();
@@ -156,6 +163,7 @@ for (let i = 0; i < todoArr.length; i++) {
     }
 }
 
+// on click edit button of the home page notes.
 let editIndex = -1;
 for (let i = 0; i < todoArr.length; i++) {
     editBtn[i].onclick = () => {
@@ -174,6 +182,7 @@ let clear2 = () => {
     textArea2.value = "";
 }
 
+// on click save button after clicking on edit button
 let sav = () => {
     if(textArea2.value!=""){
         obj.content = textArea2.value;
