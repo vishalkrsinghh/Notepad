@@ -19,6 +19,11 @@ h3{
     margin-top: 10px;
 }
 
+.fa-clipboard.fa-sm {
+    float: right;
+    cursor: pointer;
+}
+
 .innerDiv {
     min-width: 150px;
     max-width: 300px;
@@ -30,10 +35,12 @@ textarea{
     padding: 8px 12px!important;
     box-shadow: 0px 0px 6px black!important;
     margin: 8px 0px!important;
+    border-top-left-radius: 5px!important;
+    border-top-right-radius: 5px!important;
 }
 
 #OrderNotes::-webkit-scrollbar,
-#OrderNotes2::-webkit-scrollbar,#todoList::-webkit-scrollbar {
+#OrderNotes2::-webkit-scrollbar,#todoList::-webkit-scrollbar,.over::-webkit-scrollbar {
     display: none;
 }
 
@@ -42,6 +49,10 @@ textarea{
     gap: 20px;
     flex-wrap: wrap;
     height: 65vh;
+    overflow: scroll;
+}
+
+.over{
     overflow: scroll;
 }
 
@@ -72,5 +83,8 @@ textarea{
     }
     h3{
         color: white;
+    }
+    .fa-clipboard.fa-sm {
+        color: aqua;
     }
 }

@@ -11,6 +11,7 @@ let deleteBtn = document.getElementsByClassName("Delete");
 let card = document.getElementsByClassName("Card");
 let modal = document.getElementsByClassName("modal")[0];
 let save = document.getElementsByClassName("save")[0];
+let copyClip = document.getElementsByClassName("copyClip");
 
 let date= new Date;
 let months=["Jan", "Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -29,11 +30,12 @@ let abc = JSON.parse(localStorage.getItem("todo"));
 for (let i = 0; i < todoArr.length; i++) {
     todoList.innerHTML += `  <div 
             class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 innerDiv Card">
+            <i class="fa-regular fa-clipboard fa-sm copyClip" title="copy"></i>
             <span
                 class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
 
-            <div class="mt-4">
-                <p class="max-w-[40ch] text-sm text-gray-500">
+            <div class="mt-3">
+                <p class="max-w-[40ch] text-sm text-gray-500 over">
                      ${JSON.parse(abc[i]).content}
                     
                 </p>
@@ -85,11 +87,12 @@ let addCard = () => {
         for (let i = 0; i < todoArr.length; i++) {
             todoList.innerHTML += `  <div 
             class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 innerDiv Card">
+            <i class="fa-regular fa-clipboard fa-sm copyClip" title="copy"></i>
             <span
                 class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
 
-            <div class="mt-4">
-                <p class="max-w-[40ch] text-sm text-gray-500">
+            <div class="mt-3">
+                <p class="max-w-[40ch] text-sm text-gray-500 over">
                     ${JSON.parse(abc[i]).content}
                     
                 </p>
@@ -151,6 +154,25 @@ let addCard = () => {
             textArea2.value = JSON.parse(todoArr[editIndex]).content;
         }
     }
+
+    // for copy on clipboard
+    for(let i=0; i<todoArr.length; i++){
+        copyClip[i].onclick=()=>{
+            copyClip[i].style.color="blue"
+            copyClip[i].setAttribute("title", "Copied")
+            for(let j=0; j<i; j++){
+                copyClip[j].style.color=""  
+                copyClip[j].setAttribute("title", "Copy")
+            }
+            for(let k=i+1; k<todoArr.length; k++){
+                copyClip[k].style.color="" 
+                copyClip[k].setAttribute("title", "Copy") 
+            }
+            let copyText=JSON.parse(abc[i]).content;
+            // copyText.setSelectionRange(0,99999); // for mobile
+            navigator.clipboard.writeText(copyText);
+        }
+    }
 }
 
 // on click delete button of the home page notes.
@@ -172,6 +194,24 @@ for (let i = 0; i < todoArr.length; i++) {
         modal.style.display = "block"
         editIndex = i;
         textArea2.value = JSON.parse(todoArr[editIndex]).content;
+    }
+}
+
+// for copy on clipboard
+for(let i=0; i<todoArr.length; i++){
+    copyClip[i].onclick=()=>{
+        copyClip[i].style.color="blue"
+        copyClip[i].setAttribute("title", "Copied")
+        for(let j=0; j<i; j++){
+            copyClip[j].style.color=""  
+            copyClip[j].setAttribute("title", "Copy")
+        }
+        for(let k=i+1; k<todoArr.length; k++){
+            copyClip[k].style.color=""  
+            copyClip[k].setAttribute("title", "Copy")
+        }
+        let copyText=JSON.parse(abc[i]).content;
+        navigator.clipboard.writeText(copyText);
     }
 }
 
